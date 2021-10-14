@@ -4,13 +4,17 @@ plugins {
     id("org.springframework.boot") version "2.5.5"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     id("pl.allegro.tech.build.axion-release") version "1.13.3"
+    id("com.github.johnrengelman.shadow") version "7.1.0"
+    id("com.palantir.docker") version "0.30.0"
+
+
     kotlin("plugin.jpa") version "1.5.31"
     kotlin("plugin.spring") version "1.5.31"
     kotlin("jvm") version "1.5.31"
 }
 
 group = "org.wagepage"
-version = scmVersion.version
+val version: String = scmVersion.version.toString()
 java.sourceCompatibility = JavaVersion.VERSION_11
 
 configurations {
@@ -56,4 +60,10 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+docker {
+    name = "${rootProject.name}:$version"
+    buildArgs(mapOf("version" to version))
+    files(file("${buildDir}/libs/wagepage-$version.jar"))
 }
