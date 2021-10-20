@@ -39,6 +39,8 @@ dependencies {
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     runtimeOnly("io.micrometer:micrometer-registry-prometheus")
     runtimeOnly("org.postgresql:postgresql")
+    runtimeOnly("com.h2database:h2:1.4.200")
+
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.testcontainers:junit-jupiter")
@@ -66,4 +68,15 @@ docker {
     name = "${rootProject.name}:$version"
     buildArgs(mapOf("version" to version))
     files(file("${buildDir}/libs/wagepage-$version.jar"))
+}
+
+val copyFrontend by tasks.registering(Copy::class) {
+    destinationDir = buildDir.resolve("resources/main/static")
+    from("$rootDir/src/main/frontend/public") {
+        include("/**")
+    }
+}
+
+tasks.processResources {
+    dependsOn(copyFrontend)
 }

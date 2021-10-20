@@ -35,3 +35,7 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### Svelte ###
+src/main/frontend/public/build
+/src/main/frontend/node_modules/
