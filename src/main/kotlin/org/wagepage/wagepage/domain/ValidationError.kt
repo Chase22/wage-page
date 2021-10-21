@@ -1,0 +1,3 @@
+package com.rewe.digital.servicefeecustomization.domain
+
+interface ValidationError

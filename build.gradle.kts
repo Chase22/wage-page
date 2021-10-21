@@ -6,7 +6,7 @@ plugins {
     id("pl.allegro.tech.build.axion-release") version "1.13.3"
     id("com.github.johnrengelman.shadow") version "7.1.0"
     id("com.palantir.docker") version "0.30.0"
-
+    id("dev.ahmedmourad.nocopy.nocopy-gradle-plugin") version "1.4.0"
 
     kotlin("plugin.jpa") version "1.5.31"
     kotlin("plugin.spring") version "1.5.31"
@@ -36,10 +36,12 @@ dependencies {
     implementation("org.flywaydb:flyway-core")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+
+    implementation("io.arrow-kt:arrow-core:1.0.0")
+
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     runtimeOnly("io.micrometer:micrometer-registry-prometheus")
     runtimeOnly("org.postgresql:postgresql")
-    runtimeOnly("com.h2database:h2:1.4.200")
 
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     testImplementation("org.springframework.boot:spring-boot-starter-test")

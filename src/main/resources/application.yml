@@ -1,1 +1,15 @@
+spring:
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/wagepage"
+    username: "wagepage"
+    password: "wagepage"
+    hikari:
+      maximum-pool-size: 5
+      minimum-idle: 1
+      register-mbeans: true
+      validation-timeout: 3000
 
+  flyway:
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
