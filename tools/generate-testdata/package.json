@@ -1,0 +1,13 @@
+{
+  "name": "generate-testdata",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "mockaroo": "^0.1.7"
+  }
+}
